@@ -38,11 +38,11 @@ public class LoginController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
         context.setVariable("recipient", "World");
-        
+        context.setVariable("menu", request.getServletContext().getAttribute("opo"));
         if (this.status.equalsIgnoreCase("0")) {
-            engine.process("login.html", context, response.getWriter());
+            engine.process("login", context, response.getWriter());
         } else {
-            engine.process("index.html", context, response.getWriter());
+            engine.process("index", context, response.getWriter());
         }
     }
 }
